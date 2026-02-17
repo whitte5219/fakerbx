@@ -1,193 +1,716 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fake Roblox 2SV Popup Generator 😈</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body {
-      background: #0d1117;
-      color: #c9d1d9;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      padding: 25px;
-      min-height: 100vh;
-    }
-    .container { max-width: 1100px; }
-    .card { background: #161b22; border: 1px solid #30363d; }
-    .form-label { color: #8b949e; font-weight: 500; }
-    .form-control { background: #0d1117; border-color: #30363d; color: white; }
-    .form-control:focus { border-color: #58a6ff; box-shadow: 0 0 0 3px rgba(88,166,255,0.3); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Popup Generator · fake popups</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* === Fake Roblox Modal === */
-    .modal-modern {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      color: #c9d1d9;
-      max-width: 420px;
-      margin: auto;
-    }
-    .modal-header {
-      border-bottom: 1px solid #30363d;
-      padding: 16px 20px;
-    }
-    .modal-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #e6e6e6;
-    }
-    .modal-body {
-      padding: 24px 20px;
-      text-align: center;
-    }
-    .shield-icon {
-      font-size: 4.5rem;
-      color: #58a6ff;
-      margin-bottom: 1rem;
-    }
-    .modal-footer {
-      border-top: 1px solid #30363d;
-      padding: 16px 20px;
-      font-size: 0.875rem;
-      color: #8b949e;
-      text-align: center;
-    }
-    .btn-roblox-verify {
-      background: #238636;
-      border: none;
-      color: white;
-      font-weight: 500;
-      padding: 10px 32px;
-      border-radius: 6px;
-      min-width: 140px;
-    }
-    .btn-roblox-verify:hover { background: #2ea043; }
-    .small-warning { color: #8b949e; margin-top: 1.5rem; line-height: 1.4; }
-    .input-group-text { background: #0d1117; border-color: #30363d; color: #8b949e; }
-  </style>
+        body {
+            background: #1a1e2c;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* main generator card */
+        .generator {
+            max-width: 1260px;
+            width: 100%;
+            background: #0f121c;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            padding: 28px 24px;
+            border: 1px solid #2b3245;
+        }
+
+        .split-panel {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        /* left: controls */
+        .controls {
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        .right-preview {
+            flex: 1.8;
+            min-width: 480px;
+            background: #0b0e16;
+            border-radius: 24px;
+            padding: 32px 24px;
+            border: 1px solid #2f3a4f;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+        }
+
+        .section-title {
+            color: #cdd9f4;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #263040;
+            padding-bottom: 8px;
+        }
+
+        .field-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #b1c3e6;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: #0d101a;
+            border: 1px solid #2f3b52;
+            border-radius: 14px;
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            color: #eef4ff;
+            transition: 0.15s;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b7cff;
+            box-shadow: 0 0 0 3px rgba(59, 124, 255, 0.2);
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .button-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .btn-option {
+            background: #1a1f2d;
+            border: 1px solid #31415a;
+            color: #b9cbff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .btn-option.active {
+            background: #3b7cff;
+            border-color: #3b7cff;
+            color: white;
+            box-shadow: 0 4px 12px #1e4bb3;
+        }
+
+        .row-flex {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .row-flex .field-group {
+            flex: 1;
+        }
+
+        .generate-btn {
+            background: linear-gradient(145deg, #36a64f, #2b8a3e);
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 60px;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+            box-shadow: 0 10px 18px -8px #1d6b2b;
+            transition: 0.1s;
+            border: 1px solid #56c56b;
+        }
+
+        .generate-btn:hover {
+            background: linear-gradient(145deg, #3db959, #2f9f45);
+            transform: scale(1.01);
+        }
+
+        .generate-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ---------- FAKE ROBLOX POPUP (EXACT SELECTOR TARGET) ---------- */
+        /* we wrap it in a container that mimics the page context */
+        .popup-preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            background: #0b0e16;
+            border-radius: 24px;
+            position: relative;
+        }
+
+        /* this is the exact element structure from the provided path:
+           #rbx-body > div:nth-child(158) > div.fade.modal-modern.in.modal > div > div
+           we rebuild it exactly + customizable texts */
+        #rbx-body {
+            /* we simulate body context, but inside preview we scope it */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .fake-popup-root {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* the popup backbone – matching class chain */
+        .modal-backdrop-fake {
+            /* we don't need actual backdrop, just the modal structure */
+        }
+
+        .modal-modern-custom {
+            animation: fadeIn 0.1s ease;
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* re-creating the exact roblox modern modal */
+        .modal-modern.in.modal {
+            display: block;
+            background: transparent;
+        }
+
+        .modal-dialog-custom {
+            margin: 1.75rem auto;
+            max-width: 460px;
+        }
+
+        .modal-content-custom {
+            background: #1f2638;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px #3b4a62 inset;
+            border: 0;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* header exactly as target */
+        .modal-modern .modal-header {
+            padding: 20px 24px 8px 24px;
+            border-bottom: 1px solid #323e54;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-modern .modal-header .modal-title h5 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .modal-modern .modal-header .close {
+            background: transparent;
+            border: none;
+            color: #9aaec9;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .modal-modern .modal-header .close:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        /* body */
+        .modal-modern .modal-body {
+            padding: 16px 24px 18px;
+            font-size: 1rem;
+            color: #dbe4f0;
+            line-height: 1.5;
+            background: #1b2232;
+        }
+
+        /* footer buttons */
+        .modal-modern .modal-footer {
+            padding: 12px 24px 22px 24px;
+            border-top: 1px solid #2e3b50;
+            display: flex;
+            gap: 14px;
+            justify-content: flex-end;
+            background: #1b2232;
+        }
+
+        .btn-roblox {
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: default; /* non interactive inside preview */
+            transition: 0.1s;
+            min-width: 100px;
+            text-align: center;
+            background: #3b7cff;
+            color: white;
+            box-shadow: 0 6px 12px #142e5e;
+        }
+
+        .btn-roblox.secondary {
+            background: #2f3d5a;
+            box-shadow: none;
+            color: #d0deff;
+        }
+
+        .btn-roblox.blue {
+            background: #3b7cff;
+        }
+
+        .btn-roblox.red {
+            background: #d33f4d;
+            box-shadow: 0 6px 12px #631e26;
+        }
+
+        .btn-roblox.green {
+            background: #2b8f44;
+        }
+
+        .btn-roblox.small {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+        }
+
+        .icon-close {
+            font-size: 28px;
+            display: inline-block;
+            transform: rotate(45deg);
+        }
+
+        .close span {
+            display: flex;
+            align-items: center;
+        }
+
+        /* text footer inside modal if needed */
+        .modal-footer .text-footer {
+            color: #8b9fc7;
+            margin: 0;
+        }
+
+        /* extra details: roblox often has .text-footer inside modal */
+        .modal-footer .text-footer a {
+            color: #6b8cff;
+        }
+
+        .fake-popup-meta {
+            margin-top: 16px;
+            color: #6f7d9c;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid #212836;
+            padding-top: 14px;
+        }
+
+        .fake-popup-meta code {
+            background: #0101013b;
+            padding: 3px 6px;
+            border-radius: 10px;
+        }
+
+        /* animated little indicator */
+        @keyframes fadeIn {
+            from { opacity: 0.5; transform: scale(0.99); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .copy-hint {
+            background: #161e2c;
+            border-radius: 40px;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            color: #95a9cf;
+            display: inline-block;
+            margin-top: 16px;
+        }
+
+        .preview-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            color: #b7c7e9;
+        }
+    </style>
 </head>
 <body>
+<div class="generator">
+    <div class="split-panel">
+        <!-- left panel: inputs -->
+        <div class="controls">
+            <div class="section-title">✎ customize popup</div>
 
-<div class="container">
-  <h2 class="text-center mb-4">Fake Roblox 2SV Popup Maker</h2>
-  <p class="text-center text-muted mb-5">Make it look 99% like the real one — customize title, message, button, etc.</p>
-
-  <div class="row g-4">
-    <!-- Controls -->
-    <div class="col-lg-5">
-
-      <div class="card p-4 mb-4">
-        <h5 class="mb-3">Popup Content</h5>
-
-        <div class="mb-3">
-          <label class="form-label">Title</label>
-          <input type="text" id="title" class="form-control" value="2-Step Verification">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Main message</label>
-          <textarea id="message" class="form-control" rows="3">Enter the code generated by your authenticator app.</textarea>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Input placeholder</label>
-          <input type="text" id="placeholder" class="form-control" value="Enter 6-digit Code">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Button text</label>
-          <input type="text" id="buttonText" class="form-control" value="Verify">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Footer warning text</label>
-          <textarea id="footer" class="form-control" rows="3">IMPORTANT: Don't share your security codes with anyone. Roblox will never ask you for your codes. This can include things like texting your code, screenshotting, etc.</textarea>
-        </div>
-
-        <button id="updateBtn" class="btn btn-primary w-100 mt-2">Update Preview</button>
-      </div>
-
-    </div>
-
-    <!-- Live Preview -->
-    <div class="col-lg-7 position-relative" style="min-height: 500px;">
-      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.75); z-index: 5; pointer-events: none;"></div>
-
-      <div id="fakeModal" class="modal fade modal-modern show d-block" tabindex="-1" style="z-index: 10;">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content modal-modern">
-            <div class="modal-header">
-              <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-              <h5 class="modal-title" id="fakeTitle">2-Step Verification</h5>
+            <div class="field-group">
+                <label>Popup title</label>
+                <input type="text" id="popupTitle" placeholder="e.g. Warning, Purchase, Security" value="2-Step Verification">
             </div>
-            <div class="modal-body">
-              <i class="bi bi-shield-lock-fill shield-icon"></i>
-              <p id="fakeMessage" class="mb-4">Enter the code generated by your authenticator app.</p>
 
-              <div class="input-group mb-4" style="max-width: 280px; margin: auto;">
-                <input type="text" id="fakeInput" class="form-control text-center" placeholder="Enter 6-digit Code" maxlength="6" readonly>
-              </div>
-
-              <button id="fakeButton" class="btn btn-roblox-verify">Verify</button>
-
-              <p class="small-warning mt-4" id="fakeFooter">
-                IMPORTANT: Don't share your security codes with anyone. Roblox will never ask you for your codes. This can include things like texting your code, screenshotting, etc.
-              </p>
-
-              <p class="text-center mt-3">
-                <a href="#" class="text-info small">Use another verification method</a>
-              </p>
+            <div class="field-group">
+                <label>Message content</label>
+                <textarea id="popupMessage" rows="3">Enter the code generated by your authenticator app.</textarea>
             </div>
-          </div>
+
+            <div class="row-flex">
+                <div class="field-group">
+                    <label>Icon / header note (small top text)</label>
+                    <input type="text" id="headerNote" placeholder="optional · e.g. Security" value="">
+                </div>
+                <div class="field-group">
+                    <label>Close button ?</label>
+                    <select id="closeButton">
+                        <option value="show" selected>Show ✕</option>
+                        <option value="hide">Hide</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="mb-2">Button 1 (left / main)</label>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <input type="text" id="btn1Text" placeholder="button text" value="Verify" style="flex:2;">
+                    <select id="btn1Style" style="flex:1;">
+                        <option value="blue" selected>Blue (default)</option>
+                        <option value="green">Green</option>
+                        <option value="red">Red</option>
+                        <option value="secondary">Gray</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label>Button 2 (right / secondary)</label>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <input type="text" id="btn2Text" placeholder="button text" value="Cancel">
+                    <select id="btn2Style" style="flex:1;">
+                        <option value="secondary" selected>Gray (secondary)</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                    </select>
+                </div>
+                <div style="margin-top: 8px;">
+                    <label style="display: inline-flex; align-items: center; gap: 6px;">
+                        <input type="checkbox" id="btn2Enabled" checked> Enable second button
+                    </label>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label>Extra footer text (like support link)</label>
+                <input type="text" id="footerText" placeholder="e.g. Need help? Contact Roblox Support" value="Need help? Contact Roblox Support">
+            </div>
+
+            <div class="field-group">
+                <label>Security disclaimer (small bottom)</label>
+                <input type="text" id="disclaimerText" value="IMPORTANT: Don't share your security codes with anyone.">
+            </div>
+
+            <button class="generate-btn" id="generateBtn">✨ Generate popup</button>
+
+            <div class="copy-hint">
+                ⚡ matching exact selector: <code>#rbx-body > div.fade.modal-modern.in.modal > div > div</code>
+            </div>
         </div>
-      </div>
+
+        <!-- right side: live popup preview -->
+        <div class="right-preview">
+            <div class="preview-head">
+                <span>🔍 live preview — exact replica</span>
+                <span>🪄 Roblox style</span>
+            </div>
+            <div class="popup-preview-container" id="previewContainer">
+                <!-- dynamic popup will be rendered inside here -->
+                <div id="rbx-body">
+                    <div class="fake-popup-root" id="popupMount">
+                        <!-- Javascript inserts the exact structure here -->
+                    </div>
+                </div>
+            </div>
+            <div class="fake-popup-meta">
+                ⚙️ generated from the path <code>#rbx-body > div:nth-child(158) > div.fade.modal-modern.in.modal > div > div</code>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-  const els = {
-    title: document.getElementById('title'),
-    message: document.getElementById('message'),
-    placeholder: document.getElementById('placeholder'),
-    buttonText: document.getElementById('buttonText'),
-    footer: document.getElementById('footer'),
-    updateBtn: document.getElementById('updateBtn'),
+    (function() {
+        const mount = document.getElementById('popupMount');
+        const titleInput = document.getElementById('popupTitle');
+        const messageInput = document.getElementById('popupMessage');
+        const headerNote = document.getElementById('headerNote');
+        const closeSelect = document.getElementById('closeButton');
+        const btn1Text = document.getElementById('btn1Text');
+        const btn1Style = document.getElementById('btn1Style');
+        const btn2Text = document.getElementById('btn2Text');
+        const btn2Style = document.getElementById('btn2Style');
+        const btn2Enabled = document.getElementById('btn2Enabled');
+        const footerText = document.getElementById('footerText');
+        const disclaimerText = document.getElementById('disclaimerText');
+        const generateBtn = document.getElementById('generateBtn');
 
-    fakeTitle: document.getElementById('fakeTitle'),
-    fakeMessage: document.getElementById('fakeMessage'),
-    fakeInput: document.getElementById('fakeInput'),
-    fakeButton: document.getElementById('fakeButton'),
-    fakeFooter: document.getElementById('fakeFooter')
-  };
+        // helper to build popup based on current fields
+        function renderPopup() {
+            const title = titleInput.value.trim() || "Popup";
+            const message = messageInput.value.trim() || " ";
+            const note = headerNote.value.trim();
+            const closeVisible = closeSelect.value === 'show';
+            const btn1Label = btn1Text.value.trim() || "Confirm";
+            const btn1Class = btn1Style.value; // blue, green, red, secondary
+            const btn2Label = btn2Text.value.trim() || "Cancel";
+            const btn2Class = btn2Style.value;
+            const showBtn2 = btn2Enabled.checked;
+            const footerExtra = footerText.value.trim();
+            const disclaimer = disclaimerText.value.trim();
 
-  function updateFake() {
-    els.fakeTitle.textContent      = els.title.value.trim() || "2-Step Verification";
-    els.fakeMessage.textContent    = els.message.value.trim() || "Enter the code generated by your authenticator app.";
-    els.fakeInput.placeholder      = els.placeholder.value.trim() || "Enter 6-digit Code";
-    els.fakeButton.textContent     = els.buttonText.value.trim() || "Verify";
-    els.fakeFooter.textContent     = els.footer.value.trim() || "";
+            // construct the exact DOM hierarchy according to the provided selector
+            // #rbx-body > div:nth-child(158) > div.fade.modal-modern.in.modal > div > div
+            // we need: #rbx-body (already outer), then a div (acts as the nth-child container), then div.fade.modal-modern.in.modal, then div.modal-dialog, then div.modal-content
+            // we'll replicate with identical classes and inner structure based on roblox modal.
 
-    if (!els.fakeFooter.textContent.trim()) {
-      els.fakeFooter.style.display = 'none';
-    } else {
-      els.fakeFooter.style.display = 'block';
-    }
-  }
+            // Clear mount but keep #rbx-body structure
+            mount.innerHTML = '';
 
-  // Live update on input
-  Object.values(els).slice(0,5).forEach(el => {
-    if (el) el.addEventListener('input', updateFake);
-  });
+            // create the intermediate container (the "div:nth-child(158)" analog)
+            const outerDiv = document.createElement('div');
+            outerDiv.className = 'popup-outer-container';  // generic, but maintains structure
 
-  // Button just forces update
-  els.updateBtn.onclick = updateFake;
+            // create the main modal div: exactly "fade modal-modern in modal"
+            const modalDiv = document.createElement('div');
+            modalDiv.className = 'fade modal-modern in modal';
+            modalDiv.setAttribute('role', 'dialog');
+            modalDiv.setAttribute('tabindex', '-1');
+            modalDiv.style.display = 'block';
+            // mimic padding-right from original? not needed for preview
 
-  // First render
-  updateFake();
+            // modal-dialog
+            const dialogDiv = document.createElement('div');
+            dialogDiv.className = 'modal-dialog modal-dialog-custom'; // keep similar
+
+            // modal-content (the white/dark card)
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'modal-content modal-content-custom';
+
+            // --- modal header ---
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'modal-header';
+            headerDiv.style.display = 'flex';
+            headerDiv.style.justifyContent = 'space-between';
+            headerDiv.style.alignItems = 'center';
+
+            // title wrapper (typical Roblox: .modal-title h5)
+            const titleWrapper = document.createElement('div');
+            titleWrapper.className = 'modal-title';
+            const h5 = document.createElement('h5');
+            h5.textContent = title;
+            if (note) {
+                const smallNote = document.createElement('span');
+                smallNote.style.fontSize = '0.7rem';
+                smallNote.style.marginLeft = '8px';
+                smallNote.style.opacity = '0.7';
+                smallNote.textContent = `· ${note}`;
+                h5.appendChild(smallNote);
+            }
+            titleWrapper.appendChild(h5);
+
+            headerDiv.appendChild(titleWrapper);
+
+            if (closeVisible) {
+                const closeBtn = document.createElement('button');
+                closeBtn.type = 'button';
+                closeBtn.className = 'close';
+                closeBtn.setAttribute('aria-label', 'Close');
+                const spanIcon = document.createElement('span');
+                spanIcon.setAttribute('aria-hidden', 'true');
+                spanIcon.innerHTML = '<span class="icon-close" style="font-size:28px;">✕</span>';  // using X
+                closeBtn.appendChild(spanIcon);
+                headerDiv.appendChild(closeBtn);
+            } else {
+                // empty div for spacing?
+                headerDiv.appendChild(document.createElement('div'));
+            }
+
+            // --- modal body ---
+            const bodyDiv = document.createElement('div');
+            bodyDiv.className = 'modal-body';
+            bodyDiv.style.padding = '16px 24px 18px';
+            const p = document.createElement('p');
+            p.style.margin = '0';
+            p.style.whiteSpace = 'pre-wrap';
+            p.textContent = message;
+            bodyDiv.appendChild(p);
+
+            // optional extra input field? we can mimic but not necessary.
+
+            // --- modal footer ---
+            const footerDiv = document.createElement('div');
+            footerDiv.className = 'modal-footer';
+            footerDiv.style.display = 'flex';
+            footerDiv.style.justifyContent = 'flex-end';
+            footerDiv.style.gap = '14px';
+            footerDiv.style.alignItems = 'center';
+
+            // buttons
+            if (showBtn2) {
+                const btn2 = document.createElement('button');
+                btn2.type = 'button';
+                btn2.className = `btn-roblox ${btn2Class}`;
+                btn2.textContent = btn2Label;
+                btn2.disabled = true; // preview only, non-interactive
+                footerDiv.appendChild(btn2);
+            }
+
+            const btn1 = document.createElement('button');
+            btn1.type = 'button';
+            btn1.className = `btn-roblox ${btn1Class}`;
+            btn1.textContent = btn1Label;
+            btn1.disabled = true;
+            footerDiv.appendChild(btn1);
+
+            // extra footer text line (optional, appears below buttons in some modals)
+            if (footerExtra || disclaimer) {
+                const extraDiv = document.createElement('div');
+                extraDiv.style.width = '100%';
+                extraDiv.style.marginTop = '8px';
+                extraDiv.style.fontSize = '0.75rem';
+                extraDiv.style.color = '#8fa2cc';
+                extraDiv.style.textAlign = 'center';
+                if (footerExtra) {
+                    const p1 = document.createElement('p');
+                    p1.className = 'text-footer';
+                    p1.style.margin = '4px 0';
+                    p1.innerHTML = footerExtra.replace('Roblox Support', '<a href="#" style="color:#6b8cff;">Roblox Support</a>');
+                    extraDiv.appendChild(p1);
+                }
+                if (disclaimer) {
+                    const p2 = document.createElement('p');
+                    p2.className = 'text-footer';
+                    p2.style.margin = '4px 0';
+                    p2.style.opacity = '0.8';
+                    p2.textContent = disclaimer;
+                    extraDiv.appendChild(p2);
+                }
+                footerDiv.appendChild(extraDiv);
+            }
+
+            // assemble the tree
+            contentDiv.appendChild(headerDiv);
+            contentDiv.appendChild(bodyDiv);
+            contentDiv.appendChild(footerDiv);
+            dialogDiv.appendChild(contentDiv);
+            modalDiv.appendChild(dialogDiv);
+            outerDiv.appendChild(modalDiv);
+            mount.appendChild(outerDiv);
+
+            // additionally add a tiny tweak: make sure the outerDiv is the direct child, like nth-child.
+            // for exact selector: #rbx-body > div:nth-child(158) > div.fade.modal-modern.in.modal > div > div
+            // our structure: #rbx-body > div.popup-outer-container > div.fade.modal-modern.in.modal > div.modal-dialog > div.modal-content
+            // yes, that matches. The final "div" (modal-content) is what the selector points to. Good.
+        }
+
+        // initial render
+        renderPopup();
+
+        // generate on button click
+        generateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderPopup();
+        });
+
+        // also update when some fields change? we bind to generate, but also for convenience, pressing Enter in some fields? keep it simple: only generate button.
+        // but we can also listen for 'Enter' key on inputs to trigger generate
+        const inputs = [titleInput, messageInput, headerNote, btn1Text, btn1Style, btn2Text, btn2Style, btn2Enabled, footerText, disclaimerText, closeSelect];
+        inputs.forEach(inp => inp.addEventListener('change', renderPopup));  // live update on change (blur for text)
+        // also for checkboxes
+        btn2Enabled.addEventListener('change', renderPopup);
+        closeSelect.addEventListener('change', renderPopup);
+        // and for text inputs, we can use 'input' event with debounce? but to avoid too much, we keep 'change' plus generate. But we also want instant preview:
+        // I'll attach input event for text fields with a small throttle (but for demo, use input directly)
+        const textInputs = [titleInput, messageInput, headerNote, btn1Text, btn2Text, footerText, disclaimerText];
+        textInputs.forEach(inp => inp.addEventListener('input', renderPopup));
+        btn1Style.addEventListener('change', renderPopup);
+        btn2Style.addEventListener('change', renderPopup);
+    })();
 </script>
+
+<!-- optional style tweaks for modal footer extra links -->
+<style>
+    .modal-footer a {
+        color: #5f8aff;
+        text-decoration: none;
+    }
+    .modal-footer a:hover {
+        text-decoration: underline;
+    }
+    .btn-roblox {
+        pointer-events: none; /* preview only */
+        opacity: 0.9;
+    }
+    .close {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: default;
+    }
+    /* make fake popup responsive */
+    .modal-dialog-custom {
+        max-width: 460px;
+        width: 100%;
+    }
+    .modal-content-custom {
+        width: 100%;
+    }
+    .popup-preview-container {
+        transition: all 0.2s;
+    }
+    #rbx-body {
+        width: 100%;
+    }
+    .popup-outer-container {
+        width: 100%;
+    }
+</style>
 </body>
 </html>
