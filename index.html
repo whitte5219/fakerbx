@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fake Roblox Popup Generator 😈</title>
+  <title>Fake Roblox 2SV Popup Generator 😈</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body {
       background: #0d1117;
-      color: #e6e6e6;
+      color: #c9d1d9;
       font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 25px;
       min-height: 100vh;
-      padding: 20px;
     }
     .container { max-width: 1100px; }
-    .form-label { font-weight: 500; }
+    .card { background: #161b22; border: 1px solid #30363d; }
+    .form-label { color: #8b949e; font-weight: 500; }
+    .form-control { background: #0d1117; border-color: #30363d; color: white; }
+    .form-control:focus { border-color: #58a6ff; box-shadow: 0 0 0 3px rgba(88,166,255,0.3); }
+
+    /* === Fake Roblox Modal === */
     .modal-modern {
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
       color: #c9d1d9;
       max-width: 420px;
       margin: auto;
@@ -32,119 +37,109 @@
     .modal-title {
       font-size: 1.25rem;
       font-weight: 600;
+      color: #e6e6e6;
     }
     .modal-body {
-      padding: 20px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .shield-icon {
+      font-size: 4.5rem;
+      color: #58a6ff;
+      margin-bottom: 1rem;
     }
     .modal-footer {
       border-top: 1px solid #30363d;
-      padding: 12px 20px;
-      justify-content: center;
+      padding: 16px 20px;
+      font-size: 0.875rem;
+      color: #8b949e;
+      text-align: center;
     }
-    .btn-roblox {
+    .btn-roblox-verify {
       background: #238636;
       border: none;
       color: white;
       font-weight: 500;
-      padding: 8px 24px;
+      padding: 10px 32px;
       border-radius: 6px;
+      min-width: 140px;
     }
-    .btn-roblox:hover { background: #2ea043; }
-    .shield-icon {
-      font-size: 3.5rem;
-      color: #58a6ff;
-    }
-    .warning-icon {
-      font-size: 3.5rem;
-      color: #f85149;
-    }
-    .small-warning {
-      font-size: 0.85rem;
-      color: #8b949e;
-      margin-top: 16px;
-    }
-    .input-group-text { background: #0d1117; border-color: #30363d; }
+    .btn-roblox-verify:hover { background: #2ea043; }
+    .small-warning { color: #8b949e; margin-top: 1.5rem; line-height: 1.4; }
+    .input-group-text { background: #0d1117; border-color: #30363d; color: #8b949e; }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2 class="text-center mb-4">Fake Roblox Popup Maker 🔥</h2>
-  <p class="text-center text-muted mb-5">Customize → watch it update live (or hit Generate)</p>
+  <h2 class="text-center mb-4">Fake Roblox 2SV Popup Maker</h2>
+  <p class="text-center text-muted mb-5">Make it look 99% like the real one — customize title, message, button, etc.</p>
 
   <div class="row g-4">
     <!-- Controls -->
     <div class="col-lg-5">
 
-      <div class="card bg-dark border-secondary mb-4">
-        <div class="card-body">
-          <h5>Main Popup</h5>
+      <div class="card p-4 mb-4">
+        <h5 class="mb-3">Popup Content</h5>
 
-          <div class="mb-3">
-            <label class="form-label">Popup Title</label>
-            <input type="text" id="title" class="form-control bg-dark text-white border-secondary" value="System Error">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Main Message</label>
-            <textarea id="message" class="form-control bg-dark text-white border-secondary" rows="3">An unexpected error occurred while processing your request. Please try again later.</textarea>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Error Code (leave empty to hide)</label>
-            <input type="text" id="errorCode" class="form-control bg-dark text-white border-secondary" value="404">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Button Text</label>
-            <input type="text" id="buttonText" class="form-control bg-dark text-white border-secondary" value="Retry">
-          </div>
-
-          <div class="form-check mb-3">
-            <input type="checkbox" id="useWarning" class="form-check-input" checked>
-            <label class="form-check-label">Show red warning triangle instead of blue shield</label>
-          </div>
-
-          <button id="generateBtn" class="btn btn-primary w-100">Generate / Update</button>
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" id="title" class="form-control" value="2-Step Verification">
         </div>
-      </div>
 
-      <div class="card bg-dark border-secondary">
-        <div class="card-body">
-          <h5>Extra Footer Text (optional)</h5>
-          <textarea id="footerText" class="form-control bg-dark text-white border-secondary" rows="2">IMPORTANT: Don't share your security codes with anyone. Roblox will never ask you for your codes.</textarea>
+        <div class="mb-3">
+          <label class="form-label">Main message</label>
+          <textarea id="message" class="form-control" rows="3">Enter the code generated by your authenticator app.</textarea>
         </div>
+
+        <div class="mb-3">
+          <label class="form-label">Input placeholder</label>
+          <input type="text" id="placeholder" class="form-control" value="Enter 6-digit Code">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Button text</label>
+          <input type="text" id="buttonText" class="form-control" value="Verify">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Footer warning text</label>
+          <textarea id="footer" class="form-control" rows="3">IMPORTANT: Don't share your security codes with anyone. Roblox will never ask you for your codes. This can include things like texting your code, screenshotting, etc.</textarea>
+        </div>
+
+        <button id="updateBtn" class="btn btn-primary w-100 mt-2">Update Preview</button>
       </div>
 
     </div>
 
-    <!-- Preview -->
-    <div class="col-lg-7">
-      <div class="position-relative" style="min-height: 500px;">
-        <!-- Fake background overlay like modal backdrop -->
-        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7); z-index:10; pointer-events:none;"></div>
+    <!-- Live Preview -->
+    <div class="col-lg-7 position-relative" style="min-height: 500px;">
+      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.75); z-index: 5; pointer-events: none;"></div>
 
-        <div id="fakeModal" class="modal fade modal-modern show d-block" tabindex="-1" style="z-index:20;">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-modern">
-              <div class="modal-header">
-                <h5 class="modal-title" id="fakeTitle">System Error</h5>
-                <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-              </div>
-              <div class="modal-body text-center">
-                <i id="icon" class="bi bi-shield-lock-fill shield-icon mb-3"></i>
-                <p id="fakeMessage" class="mb-3">An unexpected error occurred while processing your request. Please try again later.</p>
-                
-                <div id="errorCodeDiv" class="input-group mb-3" style="max-width:240px; margin:auto;">
-                  <span class="input-group-text">Error Code:</span>
-                  <input type="text" id="fakeErrorCode" class="form-control bg-secondary text-white border-0 text-center" readonly value="404">
-                </div>
+      <div id="fakeModal" class="modal fade modal-modern show d-block" tabindex="-1" style="z-index: 10;">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content modal-modern">
+            <div class="modal-header">
+              <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+              <h5 class="modal-title" id="fakeTitle">2-Step Verification</h5>
+            </div>
+            <div class="modal-body">
+              <i class="bi bi-shield-lock-fill shield-icon"></i>
+              <p id="fakeMessage" class="mb-4">Enter the code generated by your authenticator app.</p>
 
-                <button id="fakeButton" class="btn btn-roblox mt-2">Retry</button>
+              <div class="input-group mb-4" style="max-width: 280px; margin: auto;">
+                <input type="text" id="fakeInput" class="form-control text-center" placeholder="Enter 6-digit Code" maxlength="6" readonly>
               </div>
-              <div class="modal-footer small-warning" id="fakeFooter">
+
+              <button id="fakeButton" class="btn btn-roblox-verify">Verify</button>
+
+              <p class="small-warning mt-4" id="fakeFooter">
                 IMPORTANT: Don't share your security codes with anyone. Roblox will never ask you for your codes. This can include things like texting your code, screenshotting, etc.
-              </div>
+              </p>
+
+              <p class="text-center mt-3">
+                <a href="#" class="text-info small">Use another verification method</a>
+              </p>
             </div>
           </div>
         </div>
@@ -154,57 +149,45 @@
 </div>
 
 <script>
-  const titleIn     = document.getElementById('title');
-  const msgIn       = document.getElementById('message');
-  const codeIn      = document.getElementById('errorCode');
-  const btnIn       = document.getElementById('buttonText');
-  const warningChk  = document.getElementById('useWarning');
-  const footerIn    = document.getElementById('footerText');
+  const els = {
+    title: document.getElementById('title'),
+    message: document.getElementById('message'),
+    placeholder: document.getElementById('placeholder'),
+    buttonText: document.getElementById('buttonText'),
+    footer: document.getElementById('footer'),
+    updateBtn: document.getElementById('updateBtn'),
 
-  const fakeTitle   = document.getElementById('fakeTitle');
-  const fakeMsg     = document.getElementById('fakeMessage');
-  const fakeCodeDiv = document.getElementById('errorCodeDiv');
-  const fakeCode    = document.getElementById('fakeErrorCode');
-  const fakeBtn     = document.getElementById('fakeButton');
-  const fakeIcon    = document.getElementById('icon');
-  const fakeFooter  = document.getElementById('fakeFooter');
+    fakeTitle: document.getElementById('fakeTitle'),
+    fakeMessage: document.getElementById('fakeMessage'),
+    fakeInput: document.getElementById('fakeInput'),
+    fakeButton: document.getElementById('fakeButton'),
+    fakeFooter: document.getElementById('fakeFooter')
+  };
 
-  function updatePopup() {
-    fakeTitle.textContent = titleIn.value.trim() || "System Alert";
-    fakeMsg.textContent   = msgIn.value.trim() || "Something went wrong lol";
-    fakeBtn.textContent   = btnIn.value.trim() || "Okay";
+  function updateFake() {
+    els.fakeTitle.textContent      = els.title.value.trim() || "2-Step Verification";
+    els.fakeMessage.textContent    = els.message.value.trim() || "Enter the code generated by your authenticator app.";
+    els.fakeInput.placeholder      = els.placeholder.value.trim() || "Enter 6-digit Code";
+    els.fakeButton.textContent     = els.buttonText.value.trim() || "Verify";
+    els.fakeFooter.textContent     = els.footer.value.trim() || "";
 
-    const codeVal = codeIn.value.trim();
-    if (codeVal) {
-      fakeCodeDiv.style.display = 'flex';
-      fakeCode.value = codeVal;
+    if (!els.fakeFooter.textContent.trim()) {
+      els.fakeFooter.style.display = 'none';
     } else {
-      fakeCodeDiv.style.display = 'none';
+      els.fakeFooter.style.display = 'block';
     }
-
-    if (warningChk.checked) {
-      fakeIcon.className = 'bi bi-exclamation-triangle-fill warning-icon mb-3';
-    } else {
-      fakeIcon.className = 'bi bi-shield-lock-fill shield-icon mb-3';
-    }
-
-    fakeFooter.textContent = footerIn.value.trim() || "";
-    if (!fakeFooter.textContent) fakeFooter.style.display = 'none';
-    else fakeFooter.style.display = 'block';
   }
 
-  // Live updates on change/blur
-  [titleIn, msgIn, codeIn, btnIn, footerIn, warningChk].forEach(el => {
-    el.addEventListener('input', updatePopup);
-    el.addEventListener('change', updatePopup);
+  // Live update on input
+  Object.values(els).slice(0,5).forEach(el => {
+    if (el) el.addEventListener('input', updateFake);
   });
 
   // Button just forces update
-  document.getElementById('generateBtn').onclick = updatePopup;
+  els.updateBtn.onclick = updateFake;
 
-  // Initial render
-  updatePopup();
+  // First render
+  updateFake();
 </script>
-
 </body>
 </html>
